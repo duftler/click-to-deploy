@@ -24,7 +24,7 @@ Optionally, click the link below to open the properties file for your Spinnaker
 installation.
 
 <walkthrough-editor-open-file
-    filePath="scratch/scripts/install/properties"
+    filePath="click-to-deploy/k8s/spinnaker/scripts/install/properties"
     text="Open properties file">
 </walkthrough-editor-open-file>
 
