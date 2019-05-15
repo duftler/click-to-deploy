@@ -17,9 +17,9 @@ else
 fi
 
 kubectl apply -f "https://raw.githubusercontent.com/GoogleCloudPlatform/marketplace-k8s-app-tools/master/crd/app-crd.yaml"
-cat ~/scratch/templates/spinnaker_application_manifest_top.yaml \
-  ~/scratch/templates/$APP_MANIFEST_MIDDLE \
-  ~/scratch/templates/spinnaker_application_manifest_bottom.yaml \
+cat ~/click-to-deploy/k8s/spinnaker/templates/spinnaker_application_manifest_top.yaml \
+  ~/click-to-deploy/k8s/spinnaker/templates/$APP_MANIFEST_MIDDLE \
+  ~/click-to-deploy/k8s/spinnaker/templates/spinnaker_application_manifest_bottom.yaml \
   | envsubst | kubectl apply -f -
 
 bold "Labeling resources as components of application $DEPLOYMENT_NAME..."
