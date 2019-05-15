@@ -4,7 +4,7 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-source ~/scratch/scripts/install/properties
+source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
 
 read -e -p "Please enter the id of the project within which you wish to manage GCE resources: " -i $PROJECT_ID MANAGED_PROJECT_ID
 read -e -p "Please enter a name for the new Spinnaker account: " -i "$MANAGED_PROJECT_ID-acct" GCE_ACCOUNT_NAME

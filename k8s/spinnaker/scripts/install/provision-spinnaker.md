@@ -17,7 +17,7 @@ then press **Enter** to run it from the Shell.
 ### Configure the environment.
 
 ```bash
-PROJECT_ID={{project-id}} ~/scratch/scripts/install/setup_properties.sh
+PROJECT_ID={{project-id}} ~/click-to-deploy/k8s/spinnaker/scripts/install/setup_properties.sh
 ```
 
 Optionally, click the link below to open the properties file for your Spinnaker
@@ -36,7 +36,7 @@ as expected.
 This will take some time. Watch the Cloud Shell command line to see when it completes.
 
 ```bash
-~/scratch/scripts/install/setup.sh
+~/click-to-deploy/k8s/spinnaker/scripts/install/setup.sh
 ```
 
 After the setup script finishes, click **Next** to continue to the next step.
@@ -57,7 +57,7 @@ Don't use the `hal deploy connect` command. Instead, use the following command
 only.
 
 ```bash
-~/scratch/scripts/manage/connect_unsecured.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/connect_unsecured.sh
 ```
 
 ### Connect to Deck
@@ -81,7 +81,7 @@ If you would like to connect to Spinnaker without relying on port forwarding, we
 expose it via a secure domain behind the [Identity-Aware Proxy](https://cloud.google.com/iap/).
 
 ```bash
-~/scratch/scripts/expose/configure_endpoint.sh
+~/click-to-deploy/k8s/spinnaker/scripts/expose/configure_endpoint.sh
 ```
 
 ### Manage & Share Spinnaker
@@ -90,7 +90,7 @@ Now that you have provisioned Spinnaker, run this command to start managing
 Spinnaker:
 
 ```bash
-~/scratch/scripts/manage/update_console.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/update_console.sh
 ```
 
 ### Ongoing Management

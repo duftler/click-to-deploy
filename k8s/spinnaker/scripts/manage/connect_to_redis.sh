@@ -4,9 +4,9 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-source ~/scratch/scripts/install/properties
+source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
 
-~/scratch/scripts/manage/check_project_mismatch.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/check_project_mismatch.sh
 
 bold "Resolving redis host..."
 

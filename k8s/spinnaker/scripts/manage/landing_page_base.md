@@ -17,7 +17,7 @@ This section guides you as you manage your Spinnaker deployment.
 ### Ensure you are connected to the correct Kubernetes context
 
 ```bash
-PROJECT_ID={{project-id}} ~/scratch/scripts/manage/check_cluster_config.sh
+PROJECT_ID={{project-id}} ~/click-to-deploy/k8s/spinnaker/scripts/manage/check_cluster_config.sh
 ```
 
 ### Pull Spinnaker config
@@ -27,7 +27,7 @@ deployment into your Cloud Shell.
 
 
 ```bash
-~/scratch/scripts/manage/pull_config.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/pull_config.sh
 ```
 
 ### Update the console
@@ -37,7 +37,7 @@ deployment into your Cloud Shell.
 This will include details on how to connect to Spinnaker.
 
 ```bash
-~/scratch/scripts/manage/update_console.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/update_console.sh
 ```
 
 ### Configure Spinnaker via Halyard
@@ -70,7 +70,7 @@ If you change any of the configuration, paste and run this command to push
 those changes to your Spinnaker deployment.
 
 ```bash
-~/scratch/scripts/manage/push_config.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/push_config.sh
 ```
 
 ### Apply updated config to Spinnaker deployment
@@ -79,7 +79,7 @@ After you push configuration changes, you need to paste and run the following
 command to apply them to your Spinnaker deployment.
 
 ```bash
-~/scratch/scripts/manage/apply_config.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/apply_config.sh
 ```
 
 ## Included command-line tools
@@ -89,15 +89,15 @@ command to apply them to your Spinnaker deployment.
 The [Halyard CLI](https://www.spinnaker.io/reference/halyard/) (`hal`) and
 daemon are installed in your Cloud Shell.
 
-If you want to use a specific version of Halyard, use `~/scratch/scripts/cli/install_hal.sh`.
-If you want to upgrade to the latest version of Halyard, use `~/scratch/scripts/cli/update_hal.sh`.
+If you want to use a specific version of Halyard, use `~/click-to-deploy/k8s/spinnaker/scripts/cli/install_hal.sh`.
+If you want to upgrade to the latest version of Halyard, use `~/click-to-deploy/k8s/spinnaker/scripts/cli/update_hal.sh`.
 
 ### Spinnaker CLI
 
 The [Spinnaker CLI](https://www.spinnaker.io/guides/spin/app/) 
 (`spin`) is installed in your Cloud Shell.
 
-If you want to upgrade to the latest version, use `~/scratch/scripts/cli/install_spin.sh`.
+If you want to upgrade to the latest version, use `~/click-to-deploy/k8s/spinnaker/scripts/cli/install_spin.sh`.
 
 ## Scripts for Common Commands
 
@@ -110,19 +110,19 @@ The public Spinnaker documentation contains details on [configuring GKE
 clusters](https://www.spinnaker.io/setup/install/providers/kubernetes-v2/gke/).
 
 ```bash
-~/scratch/scripts/manage/add_gke_account.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/add_gke_account.sh
 ```
 
 ### Add Spinnaker account for GCE
 
 ```bash
-~/scratch/scripts/manage/add_gce_account.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/add_gce_account.sh
 ```
 
 ### Connect to Redis
 
 ```bash
-~/scratch/scripts/manage/connect_to_redis.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/connect_to_redis.sh
 ```
 
 ## Configure Operator Access

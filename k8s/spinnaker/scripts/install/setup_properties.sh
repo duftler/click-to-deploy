@@ -21,7 +21,7 @@ if [ -z "$PROJECT_ID" ]; then
   exit 1
 fi
 
-if [ -f "$HOME/scratch/scripts/install/properties" ]; then
+if [ -f "$HOME/click-to-deploy/k8s/spinnaker/scripts/install/properties" ]; then
   bold "The properties file already exists. Please move it out of the way if you want to generate a new properties file."
 else
   if [ "$GKE_CLUSTER" ]; then
@@ -70,7 +70,7 @@ else
     NEW_DEPLOYMENT_NAME="spinnaker-1"
   fi
 
-  cat > ~/scratch/scripts/install/properties <<EOL
+  cat > ~/click-to-deploy/k8s/spinnaker/scripts/install/properties <<EOL
 #!/usr/bin/env bash
 
 # This file is generated just once per Spinnaker installation, prior to running setup.sh.

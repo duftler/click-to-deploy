@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pushd ~/scratch/scripts
+pushd ~/click-to-deploy/k8s/spinnaker/scripts
 
 source ./install/properties
 

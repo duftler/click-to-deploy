@@ -8,9 +8,9 @@ err() {
   echo "$*" >&2;
 }
 
-source ~/scratch/scripts/install/properties
+source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
 
-~/scratch/scripts/manage/check_project_mismatch.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/check_project_mismatch.sh
 
 REQUIRED_APIS="cloudfunctions.googleapis.com container.googleapis.com endpoints.googleapis.com iap.googleapis.com monitoring.googleapis.com redis.googleapis.com"
 NUM_REQUIRED_APIS=$(wc -w <<< "$REQUIRED_APIS")
@@ -152,7 +152,7 @@ fi
 
 bold "Provisioning Spinnaker resources..."
 
-envsubst < ~/scratch/scripts/install/quick-install.yml | kubectl apply -f -
+envsubst < ~/click-to-deploy/k8s/spinnaker/scripts/install/quick-install.yml | kubectl apply -f -
 
 job_ready() {
   printf "Waiting on job $1 to complete"
@@ -166,8 +166,8 @@ job_ready() {
 
 job_ready hal-deploy-apply
 
-~/scratch/scripts/manage/update_landing_page.sh
-~/scratch/scripts/manage/deploy_application_manifest.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/update_landing_page.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/deploy_application_manifest.sh
 
 # Delete any existing deployment config secret.
 # It will be recreated with up-to-date contents during push_config.sh.
@@ -186,18 +186,18 @@ EXISTING_CLOUD_FUNCTION=$(gcloud functions list --project $PROJECT_ID \
 if [ -z "$EXISTING_CLOUD_FUNCTION" ]; then
   bold "Deploying audit log cloud function $CLOUD_FUNCTION_NAME..."
 
-  cat ~/scratch/scripts/install/spinnakerAuditLog/config_json.template | envsubst > ~/scratch/scripts/install/spinnakerAuditLog/config.json
-  cat ~/scratch/scripts/install/spinnakerAuditLog/index_js.template | envsubst > ~/scratch/scripts/install/spinnakerAuditLog/index.js
-  gcloud functions deploy $CLOUD_FUNCTION_NAME --source ~/scratch/scripts/install/spinnakerAuditLog \
+  cat ~/click-to-deploy/k8s/spinnaker/scripts/install/spinnakerAuditLog/config_json.template | envsubst > ~/click-to-deploy/k8s/spinnaker/scripts/install/spinnakerAuditLog/config.json
+  cat ~/click-to-deploy/k8s/spinnaker/scripts/install/spinnakerAuditLog/index_js.template | envsubst > ~/click-to-deploy/k8s/spinnaker/scripts/install/spinnakerAuditLog/index.js
+  gcloud functions deploy $CLOUD_FUNCTION_NAME --source ~/click-to-deploy/k8s/spinnaker/scripts/install/spinnakerAuditLog \
     --trigger-http --memory 2048MB --runtime nodejs8 --project $PROJECT_ID
 else
   bold "Using existing audit log cloud function $CLOUD_FUNCTION_NAME..."
 fi
 
 # We want the local hal config to match what was deployed.
-~/scratch/scripts/manage/pull_config.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/pull_config.sh
 # We want a full backup stored in the bucket and the full deployment config stored in a secret.
-~/scratch/scripts/manage/push_config.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/push_config.sh
 
 deploy_ready() {
   printf "Waiting on $2 to come online"
@@ -217,8 +217,8 @@ deploy_ready spin-orca "orchestration engine"
 deploy_ready spin-kayenta "canary analysis engine"
 deploy_ready spin-deck "UI server"
 
-~/scratch/scripts/cli/install_hal.sh
-~/scratch/scripts/cli/install_spin.sh
+~/click-to-deploy/k8s/spinnaker/scripts/cli/install_hal.sh
+~/click-to-deploy/k8s/spinnaker/scripts/cli/install_spin.sh
 
 # We want a backup containing the newly-created ~/.spin/* files as well.
-~/scratch/scripts/manage/push_config.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/push_config.sh

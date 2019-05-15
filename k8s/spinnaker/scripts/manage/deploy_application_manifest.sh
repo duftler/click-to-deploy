@@ -4,7 +4,7 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-source ~/scratch/scripts/install/properties
+source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
 
 # Query for static ip address as a signal that the Spinnaker installation is exposed via a secured endpoint.
 export IP_ADDR=$(gcloud compute addresses list --filter="name=$STATIC_IP_NAME" \

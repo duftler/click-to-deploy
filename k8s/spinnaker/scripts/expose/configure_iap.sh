@@ -4,11 +4,11 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-pushd ~/scratch/scripts
+pushd ~/click-to-deploy/k8s/spinnaker/scripts
 
 source ./install/properties
 
-~/scratch/scripts/manage/check_project_mismatch.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/check_project_mismatch.sh
 
 EXISTING_SECRET_NAME=$(kubectl get secret -n spinnaker \
   --field-selector metadata.name=="$SECRET_NAME" \
@@ -83,9 +83,9 @@ bold "Configuring Spinnaker security settings..."
 
 cat expose/configure_hal_security.sh | envsubst | bash
 
-~/scratch/scripts/manage/update_landing_page.sh
-~/scratch/scripts/manage/push_config.sh
-~/scratch/scripts/manage/apply_config.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/update_landing_page.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/push_config.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/apply_config.sh
 
 # # What about CORS?
 

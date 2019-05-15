@@ -11,13 +11,13 @@ echo "  user:some-user@somedomain.net, serviceAccount:some-service-account@some-
 read -p "Member to add: " MEMBER_TO_ADD
 echo
 
-pushd ~/scratch/scripts/install
+pushd ~/click-to-deploy/k8s/spinnaker/scripts/install
 
 source ./properties
 
-~/scratch/scripts/manage/check_project_mismatch.sh
+~/click-to-deploy/k8s/spinnaker/scripts/manage/check_project_mismatch.sh
 
-source ~/scratch/scripts/expose/set_iap_properties.sh
+source ~/click-to-deploy/k8s/spinnaker/scripts/expose/set_iap_properties.sh
 
 gcurl() {
   curl -s -H "Authorization:Bearer $(gcloud auth print-access-token)" \

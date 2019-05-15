@@ -4,7 +4,7 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-source ~/scratch/scripts/install/properties
+source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
 
 CURRENT_K8S_CONTEXT=$(kubectl config current-context)
 AVAILABLE_K8S_CONTEXTS=$(kubectl config get-contexts -o name)
