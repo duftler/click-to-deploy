@@ -1,6 +1,11 @@
 # Manage Spinnaker
 
-## GCP Project Selection
+Use this section to manage your Spinnaker deployment going forward.
+
+## Select GCP project
+
+Select the project in which your Spinnaker is installed, then click **Confirm
+project**.
 
 <walkthrough-project-billing-setup>
 </walkthrough-project-billing-setup>
