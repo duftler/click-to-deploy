@@ -10,41 +10,48 @@ If you would like to learn more about Spinnaker, please visit the
 
 Popular open stacks on Kubernetes packaged by Google.
 
+## About Spinnaker for Google Cloud Platform
+
+This solution installs a single instance of Spinnaker into a GKE cluster in a
+production-ready configuration. The installation follows recommended practices
+for running Spinnaker on Google Cloud Platform, and is integrated with related
+Google Cloud services, such as [Cloud Build](https://cloud.google.com/cloud-build/).
+
+This solution also provides a simplified configuration experience, as well as a
+management environment and workflow for ongoing administration of Spinnaker.
+
 ## Architecture
 
 ### TODO: Create architecture diagram
 
 ![Architecture diagram](resources/spinnaker-k8s-app-architecture.png)
 
-This solution install a single instance of Spinnaker into a Kubernetes cluster.
-Our goal is to provide an easy initial installation experience, as well as an
-environment and workflow for ongoing management of Spinnaker by an individual
-or a team.
-
 Spinnaker is composed of a number of individual
-[micro services](https://www.spinnaker.io/reference/architecture/), and each
-will be deployed in their own Pods, managed by Deployment objects, behind
-Service objects.
+[microservices](https://www.spinnaker.io/reference/architecture/). These
+will be deployed in their own Kuberetes Pods, managed by Deployment objects,
+behind Service objects.
 
 [Halyard](https://www.spinnaker.io/reference/halyard/) is Spinnaker's
 configuration service and consists of a CLI and a daemon. The CLI will be
-installed in your Cloud Shell and the daemon will be installed in a Pod managed
-by a StatefulSet object.
+installed in the management environment (based on Cloud Shell) included in
+this solution. The daemon will be installed in a Pod managed by a StatefulSet
+object.
 
-[Spin](https://www.spinnaker.io/guides/spin/app/) is Spinnaker's CLI. It will
-be installed in your Cloud Shell.
+[Spin](https://www.spinnaker.io/guides/spin/app/) is Spinnaker's CLI. It is also
+available in the management environment.
 
-The Spinnaker solution will not be exposed to external traffic by default.
-A good initial step is accessing Spinnaker via port forwarding, and a script is
-included for automatically establishing port forwarding. In addition, the
-solution includes guidance and automation for exposing Spinnaker via a secure
-domain behind the [Identity-Aware Proxy](https://cloud.google.com/iap/).
+As a safe default, the Spinnaker instance is not exposed to external traffic, and
+is accessed via port forwarding. Port forwarding can be set up with a single command
+from the management environment. Alternatively, the management environment allos you
+to expose Spinnaker via the [Identity-Aware Proxy](https://cloud.google.com/iap/), using
+a secure domain.
 
 # Installation
 
-## Quick install with Google Cloud Shell
+## Quick install via the management console
 
-You must use [Google Cloud Shell](https://cloud.google.com/shell/) to perform the installation.
+You must use the management environment, based on [Cloud Shell](https://cloud.google.com/shell/),
+to perform the installation.
 
 [![Provision Spinnaker](https://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/GoogleCloudPlatform/click-to-deploy.git&cloudshell_working_dir=k8s/spinnaker/scripts/install&cloudshell_tutorial=provision-spinnaker.md)
 
@@ -52,55 +59,63 @@ You must use [Google Cloud Shell](https://cloud.google.com/shell/) to perform th
 
 #### Set up command line tools
 
-Cloud Shell has all the required tools pre-installed.
+The management environment has all the required tools pre-installed.
 
 #### Create a Google Kubernetes Engine cluster
 
-The Spinnaker installation process will create a new GKE cluster by default. If
-you would prefer to use an existing cluster, you must ensure that it has:
+By default, the installation process will create a new GKE cluster for your Spinnaker
+instance. To use an existing cluster, you must ensure that it has:
+
 * IP aliases enabled (since we are using a
-[hosted Redis](https://cloud.google.com/memorystore/) instance)
+[Cloud Memorystore for Redis](https://cloud.google.com/memorystore/) instance)
 * `Full Cloud Platform` scope for its nodes (if using the default service account)
 
-#### Install the Solution
+#### Install Spinnaker for Google Cloud Platform
 
-When you click on the "Open in Google Cloud Shell" button above, a tutorial
-pane will open with several copy/paste commands. As part of this process, a
-`properties` file will be generated. You can modify the values in the generated
-`properties` file to fine-tune the installation _prior_ to launching the actual
-`setup` script.
+When you click on the "Open in Google Cloud Shell" button above, the management
+environment will open and ask you to copy/paste and execute a number of commands.
 
-When the initial installation process completes, you can use the remaining
-copy/paste commands to locate your Spinnaker deployment in the GKE Applications
-view, access Spinnaker via port-forwarding, expose Spinnaker securely, share
-Spinnaker with your teammates, and so on.
+As part of this process, a `properties` file will be generated. You can modify the
+values in the generated `properties` file to fine-tune the desired configuration
+_prior_ to launching the actual `setup` script.
+
+When the initial installation process completes, additional commands will be shown
+to allow you to:
+
+* locate your Spinnaker deployment in the GKE Applications view
+* access Spinnaker via port-forwarding
+* expose Spinnaker securely using IAP
+* allow others to administer and/or access Spnnakeir
+
+and more.
 
 #### Ongoing Management of Spinnaker
 
-The ongoing management workflow will be as follows:
+To manage your Spinnaker instance once installed:
 
 * Locate your Spinnaker installation by navigating to the newly-registered
-Kubernetes Application via the
-[Applications](https://console.developers.google.com/kubernetes/application?project=_)
+Application in the
+[GKE Applications](https://console.developers.google.com/kubernetes/application?project=_)
 view.
-* Click the link from the Spinnaker Application to open Cloud Shell and clone
-this repo
-* Ensure you are connected to the correct GKE cluster (that is, the one
-containing the Spinnaker deployment you intend to manage)
-* Pull all the config from the Spinnaker deployment into your Cloud Shell
-environment
-* Update the Cloud Shell tutorial pane to reflect the newly-pulled config
-* Make all of your changes using `hal` in Cloud Shell (often by simply
-copying & pasting commands); `hal` will apply its changes and perform its
-validation against a Halyard daemon running in Cloud Shell
-* Push your changes back to the Spinnaker deployment (a full config backup is
-implicitly pushed to a bucket as well)
-* Apply your changes to the Spinnaker deployment
+* Click the link from the Spinnaker Application to open the management
+environment in Cloud Shell, and update it by cloning this repo
+* Verify that you are managing the correct Spinnaker instance by ensuring that you
+are connected to the GKE cluster containing the Spinnaker instance you intend to manage
+* Update your configuration but pulling the config from the Spinnaker instance into your
+management environment
+* Refresh the management environment interface to reflect your updated configuration
+* Make all of your changes using `hal` in Cloud Shell, using the commands provided by the
+management environment, or by entering commands directly. `hal` will validate and apply your
+changes
+* Push the updated configuration to your Spinnaker instance. The configuration is automatically
+backed up to GCS as part of this process
+* Apply your changes to the Spinnaker instance
 
-There are scripts provided for each of these steps, and copy/paste commands and
-instructions are rendered in the Cloud Shell tutorial pane.
+Scripts are provided for each of these steps, and copy/paste commands and instructions
+are rendered in the management environment in the Cloud Shell tutorial pane.
 
-This approach allows for an Admin to manage multiple Spinnaker deployments, as
-the source of truth for the deployment's configuration is always the deployment
-itself. It also allows for easily sharing management of Spinnaker among
-multiple Admins.
+This approach allows an administrator to manage multiple Spinnaker instances from the
+same management environment. The source of truth for each instance is always the instance
+itself, with a secure backup in [Google Cloud Storage](https://cloud.google.com/storage).
+This makes it easy for multiple admins - each with their own management environment, to
+adminster many Spinnaker instances.
