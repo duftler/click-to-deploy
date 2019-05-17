@@ -117,5 +117,5 @@ are rendered in the management environment in the Cloud Shell tutorial pane.
 This approach allows an administrator to manage multiple Spinnaker instances from the
 same management environment. The source of truth for each instance is always the instance
 itself, with a secure backup in [Google Cloud Storage](https://cloud.google.com/storage).
-This makes it easy for multiple admins - each with their own management environment, to
+This makes it easy for multiple admins, each with their own management environment, to
 adminster many Spinnaker instances.
