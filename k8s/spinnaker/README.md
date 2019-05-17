@@ -108,7 +108,7 @@ environment in Cloud Shell, and update it by cloning this repo
 connected to the GKE cluster containing the Spinnaker instance you want to manage.
 * Update your configuration by pulling the config from the Spinnaker instance into your
 management environment.
-* Refresh the management environment interface to reflect your updated configuration
+* Refresh the management environment interface to reflect your updated configuration.
 * Make all of your changes using `hal` in Cloud Shell, using the commands provided by the
 management environment, or by entering commands directly. `hal` will validate and apply your
 changes
