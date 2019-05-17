@@ -12,7 +12,7 @@ Popular open stacks on Kubernetes packaged by Google.
 
 ## About Spinnaker for Google Cloud Platform
 
-This solution installs a single instance of Spinnaker into a GKE cluster in a
+This solution installs a single instance of Spinnaker onto a GKE cluster in a
 production-ready configuration. The installation follows recommended practices
 for running Spinnaker on Google Cloud Platform, and is integrated with related
 Google Cloud services, such as [Cloud Build](https://cloud.google.com/cloud-build/).
@@ -31,6 +31,10 @@ Spinnaker is composed of a number of individual
 will be deployed in their own Kuberetes Pods, managed by Deployment objects,
 behind Service objects.
 
+### Management components
+
+We provide the following two components to help you manage your Spinnaker instance:
+
 [Halyard](https://www.spinnaker.io/reference/halyard/) is Spinnaker's
 configuration service and consists of a CLI and a daemon. The CLI will be
 installed in the management environment (based on Cloud Shell) included in
@@ -40,11 +44,11 @@ object.
 [Spin](https://www.spinnaker.io/guides/spin/app/) is Spinnaker's CLI. It is also
 available in the management environment.
 
-As a safe default, the Spinnaker instance is not exposed to external traffic, and
-is accessed via port forwarding. Port forwarding can be set up with a single command
-from the management environment. Alternatively, the management environment allows you
-to expose Spinnaker via the [Identity-Aware Proxy](https://cloud.google.com/iap/), using
-a secure domain.
+### Networking
+
+As a safe default, the Spinnaker instance is not exposed to external traffic. It's accessed
+via port fowarding, which can be set up with with a single command from the management environment.
+Alternatively, the management environment allows you to expose Spinnaker via the [Identity-Aware Proxy](https://cloud.google.com/iap/), using a secure domain.
 
 # Installation
 
