@@ -42,7 +42,7 @@ available in the management environment.
 
 As a safe default, the Spinnaker instance is not exposed to external traffic, and
 is accessed via port forwarding. Port forwarding can be set up with a single command
-from the management environment. Alternatively, the management environment allos you
+from the management environment. Alternatively, the management environment allows you
 to expose Spinnaker via the [Identity-Aware Proxy](https://cloud.google.com/iap/), using
 a secure domain.
 
@@ -63,7 +63,7 @@ The management environment has all the required tools pre-installed.
 
 #### Create a Google Kubernetes Engine cluster
 
-By default, the installation process will create a new GKE cluster for your Spinnaker
+By default, the installation process creates a new GKE cluster for your Spinnaker
 instance. To use an existing cluster, you must ensure that it has:
 
 * IP aliases enabled (since we are using a
@@ -73,19 +73,20 @@ instance. To use an existing cluster, you must ensure that it has:
 #### Install Spinnaker for Google Cloud Platform
 
 When you click on the "Open in Google Cloud Shell" button above, the management
-environment will open and ask you to copy/paste and execute a number of commands.
+environment asks you to copy/paste and execute a number of commands. Click to copy/paste,
+then press Enter to execute.
 
-As part of this process, a `properties` file will be generated. You can modify the
-values in the generated `properties` file to fine-tune the desired configuration
-_prior_ to launching the actual `setup` script.
+As part of this process, a `properties` file is generated. You can modify the
+values in the generated `properties` file to fine-tune your configuration
+_before_ launching the actual `setup` script.
 
 When the initial installation process completes, additional commands will be shown
 to allow you to:
 
-* locate your Spinnaker deployment in the GKE Applications view
+* find your Spinnaker deployment in the GKE Applications view
 * access Spinnaker via port-forwarding
 * expose Spinnaker securely using IAP
-* allow others to administer and/or access Spnnakeir
+* allow others to administer and/or access Spinnaker
 
 and more.
 
@@ -101,7 +102,7 @@ view.
 environment in Cloud Shell, and update it by cloning this repo
 * Verify that you are managing the correct Spinnaker instance by ensuring that you
 are connected to the GKE cluster containing the Spinnaker instance you intend to manage
-* Update your configuration but pulling the config from the Spinnaker instance into your
+* Update your configuration by pulling the config from the Spinnaker instance into your
 management environment.
 * Refresh the management environment interface to reflect your updated configuration
 * Make all of your changes using `hal` in Cloud Shell, using the commands provided by the
