@@ -111,7 +111,7 @@ management environment.
 * Refresh the management environment interface to reflect your updated configuration.
 * Make all of your changes using `hal` in Cloud Shell, using the commands provided by the
 management environment, or by entering commands directly. `hal` will validate and apply your
-changes
+changes.
 * Push the updated configuration to your Spinnaker instance. The configuration is automatically
 backed up to GCS as part of this process.
 * Apply your changes to the Spinnaker instance
