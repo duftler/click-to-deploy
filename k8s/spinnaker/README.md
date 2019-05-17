@@ -44,20 +44,21 @@ object.
 [Spin](https://www.spinnaker.io/guides/spin/app/) is Spinnaker's CLI. It is also
 available in the management environment.
 
-### Networking
+### Network access to Spinnaker
 
 As a safe default, the Spinnaker instance is not exposed to external traffic. It's accessed
 via port fowarding, which can be set up with with a single command from the management environment.
+
 Alternatively, the management environment allows you to expose Spinnaker via the [Identity-Aware Proxy](https://cloud.google.com/iap/), using a secure domain.
 
 # Installation
 
 ## Quick install via the management console
 
-You must use the management environment, based on [Cloud Shell](https://cloud.google.com/shell/),
+Use the management environment, based on [Cloud Shell](https://cloud.google.com/shell/),
 to perform the installation.
 
-[![Provision Spinnaker](https://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/GoogleCloudPlatform/click-to-deploy.git&cloudshell_working_dir=k8s/spinnaker/scripts/install&cloudshell_tutorial=provision-spinnaker.md)
+[![Install Spinnaker](https://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/GoogleCloudPlatform/click-to-deploy.git&cloudshell_working_dir=k8s/spinnaker/scripts/install&cloudshell_tutorial=provision-spinnaker.md)
 
 ### Prerequisites
 
@@ -87,14 +88,14 @@ _before_ launching the actual `setup` script.
 When the initial installation process completes, additional commands will be shown
 to allow you to:
 
-* find your Spinnaker deployment in the GKE Applications view
+* find your Spinnaker installation in the GKE Applications view
 * access Spinnaker via port-forwarding
 * expose Spinnaker securely using IAP
 * allow others to administer and/or access Spinnaker
 
 and more.
 
-#### Ongoing Management of Spinnaker
+#### Ongoing management of Spinnaker
 
 To manage your installed Spinnaker instance:
 
@@ -108,7 +109,7 @@ environment in Cloud Shell, and update it by cloning this repo
 connected to the GKE cluster containing the Spinnaker instance you want to manage.
 * Update your configuration by pulling the config from the Spinnaker instance into your
 management environment.
-* Refresh the management environment interface to reflect your updated configuration.
+* Update the management environment interface to reflect your updated configuration.
 * Make all of your changes using `hal` in Cloud Shell, using the commands provided by the
 management environment, or by entering commands directly. `hal` will validate and apply your
 changes.
@@ -122,5 +123,6 @@ are rendered in the management environment in the Cloud Shell tutorial pane.
 This approach allows an administrator to manage multiple Spinnaker instances from the
 same management environment. The source of truth for each instance is always the instance
 itself, with a secure backup in [Google Cloud Storage](https://cloud.google.com/storage).
+
 This makes it easy for multiple admins, each with their own management environment, to
 adminster many Spinnaker instances.
