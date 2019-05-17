@@ -108,7 +108,7 @@ management environment
 management environment, or by entering commands directly. `hal` will validate and apply your
 changes
 * Push the updated configuration to your Spinnaker instance. The configuration is automatically
-backed up to GCS as part of this process
+backed up to GCS as part of this process.
 * Apply your changes to the Spinnaker instance
 
 Scripts are provided for each of these steps, and copy/paste commands and instructions
