@@ -92,7 +92,7 @@ and more.
 
 #### Ongoing Management of Spinnaker
 
-To manage your Spinnaker instance once installed:
+To manage your installed Spinnaker instance:
 
 * Locate your Spinnaker installation by navigating to the newly-registered
 Application in the
