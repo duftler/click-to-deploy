@@ -19,6 +19,9 @@ if [ -f "$HALYARD_DAEMON_PID_FILE" ]; then
     fi
 fi
 
+# Just in case the pid file doesn't match the daemon that's actually listening on the port.
+pkill -f '/opt/halyard/lib/halyard-web' || true
+pkill -f "$HOME/hal/halyard/lib/halyard-web" || true
 
 curl -O https://raw.githubusercontent.com/spinnaker/halyard/master/install/debian/InstallHalyard.sh
 sudo bash InstallHalyard.sh --user $USER -y $@
@@ -40,5 +43,5 @@ sed -i s:/opt/halyard:~/hal/halyard:g ~/hal/hal
 sed -i s:/var/log/spinnaker/halyard:~/hal/log:g ~/hal/hal
 sudo sed -i s:/opt/spinnaker:~/hal/spinnaker:g ~/hal/halyard/bin/halyard
 sed -i 's:rm -rf /opt/halyard:rm -rf ~/hal/halyard:g' ~/hal/update-halyard
-sed -i s:/opt/spinnaker:~/hal/spinnaker:g ~/hal/update-halyard
+sed -i "s:^  HAL_USER=.*$:  HAL_USER=$(cat ~/hal/spinnaker/config/halyard-user):g" ~/hal/update-halyard
 sed -i s:/etc/bash_completion.d/hal:~/hal/hal_completion: ~/hal/update-halyard
