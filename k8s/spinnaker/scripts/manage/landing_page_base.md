@@ -89,15 +89,28 @@ command to apply them to your Spinnaker deployment.
 The [Halyard CLI](https://www.spinnaker.io/reference/halyard/) (`hal`) and
 daemon are installed in your Cloud Shell.
 
-If you want to use a specific version of Halyard, use `~/click-to-deploy/k8s/spinnaker/scripts/cli/install_hal.sh`.
-If you want to upgrade to the latest version of Halyard, use `~/click-to-deploy/k8s/spinnaker/scripts/cli/update_hal.sh`.
+If you want to use a specific version of Halyard, use:
+
+```bash
+~/click-to-deploy/k8s/spinnaker/scripts/cli/install_hal.sh --version $HALYARD_VERSION
+```
+
+If you want to upgrade to the latest version of Halyard, use:
+
+```bash
+~/click-to-deploy/k8s/spinnaker/scripts/cli/update_hal.sh
+```
 
 ### Spinnaker CLI
 
 The [Spinnaker CLI](https://www.spinnaker.io/guides/spin/app/) 
 (`spin`) is installed in your Cloud Shell.
 
-If you want to upgrade to the latest version, use `~/click-to-deploy/k8s/spinnaker/scripts/cli/install_spin.sh`.
+If you want to upgrade to the latest version, use:
+
+```bash
+~/click-to-deploy/k8s/spinnaker/scripts/cli/install_spin.sh
+```
 
 ## Scripts for Common Commands
 
@@ -117,6 +130,21 @@ clusters](https://www.spinnaker.io/setup/install/providers/kubernetes-v2/gke/).
 
 ```bash
 ~/click-to-deploy/k8s/spinnaker/scripts/manage/add_gce_account.sh
+```
+
+### Upgrade Halyard daemon running in cluster
+
+First, modify `HALYARD_VERSION` in your `properties` file to reflect the desired version of halyard:
+
+<walkthrough-editor-open-file
+    filePath="click-to-deploy/k8s/spinnaker/scripts/install/properties"
+    text="Open properties file">
+</walkthrough-editor-open-file>
+
+Next, apply this change to the Statefulset managing the Halyard daemon:
+
+```bash
+~/click-to-deploy/k8s/spinnaker/scripts/manage/update_halyard_daemon.sh
 ```
 
 ### Connect to Redis
