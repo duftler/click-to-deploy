@@ -217,7 +217,7 @@ deploy_ready spin-orca "orchestration engine"
 deploy_ready spin-kayenta "canary analysis engine"
 deploy_ready spin-deck "UI server"
 
-~/click-to-deploy/k8s/spinnaker/scripts/cli/install_hal.sh
+~/click-to-deploy/k8s/spinnaker/scripts/cli/install_hal.sh --version $HALYARD_VERSION
 ~/click-to-deploy/k8s/spinnaker/scripts/cli/install_spin.sh
 
 # We want a backup containing the newly-created ~/.spin/* files as well.
