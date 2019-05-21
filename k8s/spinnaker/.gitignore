@@ -1,5 +1,6 @@
 InstallHalyard.sh
 scripts/expose/*_expanded.*
+scripts/manage/*_expanded.*
 scripts/install/properties
 scripts/install/properties.*
 scripts/install/InstallHalyard.sh
