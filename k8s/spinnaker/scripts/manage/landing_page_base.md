@@ -132,9 +132,24 @@ clusters](https://www.spinnaker.io/setup/install/providers/kubernetes-v2/gke/).
 ~/click-to-deploy/k8s/spinnaker/scripts/manage/add_gce_account.sh
 ```
 
+### Upgrade Spinnaker
+
+First, modify `SPINNAKER_VERSION` in your `properties` file to reflect the desired version of Spinnaker:
+
+<walkthrough-editor-open-file
+    filePath="click-to-deploy/k8s/spinnaker/scripts/install/properties"
+    text="Open properties file">
+</walkthrough-editor-open-file>
+
+Next, use Halyard to apply the changes:
+
+```bash
+~/click-to-deploy/k8s/spinnaker/scripts/manage/update_spinnaker_version.sh
+```
+
 ### Upgrade Halyard daemon running in cluster
 
-First, modify `HALYARD_VERSION` in your `properties` file to reflect the desired version of halyard:
+First, modify `HALYARD_VERSION` in your `properties` file to reflect the desired version of Halyard:
 
 <walkthrough-editor-open-file
     filePath="click-to-deploy/k8s/spinnaker/scripts/install/properties"
