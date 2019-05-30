@@ -132,6 +132,12 @@ clusters](https://www.spinnaker.io/setup/install/providers/kubernetes-v2/gke/).
 ~/click-to-deploy/k8s/spinnaker/scripts/manage/add_gce_account.sh
 ```
 
+### Add Spinnaker account for GAE
+
+```bash
+~/click-to-deploy/k8s/spinnaker/scripts/manage/add_gae_account.sh
+```
+
 ### Upgrade Spinnaker
 
 First, modify `SPINNAKER_VERSION` in your `properties` file to reflect the desired version of Spinnaker:
