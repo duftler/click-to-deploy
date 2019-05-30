@@ -224,5 +224,5 @@ deploy_ready spin-deck "UI server"
 ~/click-to-deploy/k8s/spinnaker/scripts/manage/push_config.sh
 
 echo
-bold Installation complete
+bold "Installation complete."
 echo
