@@ -22,7 +22,7 @@ if [ -z "$PROJECT_ID" ]; then
 fi
 
 if [ -f "$HOME/click-to-deploy/k8s/spinnaker/scripts/install/properties" ]; then
-  bold "The properties file already exists. Please move it out of the way if you want to generate a new properties file."
+  bold "The properties file already exists at $HOME/click-to-deploy/k8s/spinnaker/scripts/install/properties. Please move it out of the way if you want to generate a new properties file."
 else
   if [ "$GKE_CLUSTER" ]; then
     if [ -z "$ZONE" ]; then
