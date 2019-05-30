@@ -6,7 +6,7 @@ bold() {
 
 source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
 
-read -e -p "Please enter the id of the project within which you wish to manage GCE resources: " -i $PROJECT_ID MANAGED_PROJECT_ID
+read -e -p "Please enter the id of the project within which you wish to manage GAE resources: " -i $PROJECT_ID MANAGED_PROJECT_ID
 read -e -p "Please enter a name for the new Spinnaker account: " -i "$MANAGED_PROJECT_ID-acct" GAE_ACCOUNT_NAME
 
 bold "Assigning required roles to $SERVICE_ACCOUNT_NAME..."
@@ -16,7 +16,7 @@ SA_EMAIL=$(gcloud iam service-accounts --project $PROJECT_ID list \
   --format='value(email)')
 
 #GAE_REQUIRED_ROLES=(compute.instanceAdmin compute.networkAdmin compute.securityAdmin compute.storageAdmin iam.serviceAccountUser)
-GAE_REQUIRED_ROLES=(roles/storage.admin roles/appengine.appAdmin)
+GAE_REQUIRED_ROLES=(storage.admin appengine.appAdmin)
 EXISTING_ROLES=$(gcloud projects get-iam-policy --filter bindings.members:$SA_EMAIL $MANAGED_PROJECT_ID \
   --flatten bindings[].members --format="value(bindings.role)")
 
