@@ -15,7 +15,6 @@ SA_EMAIL=$(gcloud iam service-accounts --project $PROJECT_ID list \
   --filter="displayName:$SERVICE_ACCOUNT_NAME" \
   --format='value(email)')
 
-#GAE_REQUIRED_ROLES=(compute.instanceAdmin compute.networkAdmin compute.securityAdmin compute.storageAdmin iam.serviceAccountUser)
 GAE_REQUIRED_ROLES=(storage.admin appengine.appAdmin)
 EXISTING_ROLES=$(gcloud projects get-iam-policy --filter bindings.members:$SA_EMAIL $MANAGED_PROJECT_ID \
   --flatten bindings[].members --format="value(bindings.role)")
