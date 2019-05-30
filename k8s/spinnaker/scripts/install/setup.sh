@@ -20,7 +20,9 @@ NUM_ENABLED_APIS=$(gcloud services list --project $PROJECT_ID \
 
 if [ $NUM_ENABLED_APIS != $NUM_REQUIRED_APIS ]; then
   bold "Enabling required APIs ($REQUIRED_APIS)..."
-  bold "This may take 10 minutes or more (progress will not be reported during this operation)..."
+  bold "This phase will take a few minutes (progress will not be reported during this operation)."
+  bold
+  bold "Once the required APIs are enabled, the remaining components will be installed and configured. The entire installation may take 10 minutes or more."
 
   gcloud services --project $PROJECT_ID enable $REQUIRED_APIS
 fi
