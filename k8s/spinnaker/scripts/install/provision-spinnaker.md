@@ -84,18 +84,27 @@ expose it via a secure domain behind the [Identity-Aware Proxy](https://cloud.go
 View the who, what, when and where of your Spinnaker installation
 [here](https://console.developers.google.com/logs/viewer?project={{project-id}}&resource=cloud_function&minLogLevel=200).
 
-### Manage & Share Spinnaker
+## Next steps: manage Spinnaker
 
-Now that you have provisioned Spinnaker, run this command to start managing
-Spinnaker:
+Now that you've installed Spinnaker on Google Kubernetes Engine, and
+accessed it via port forwarding or made it available over the public
+internet, you'll use this same console to manage your Spinnaker instance.
+
+You can open this console by navigating to the Kubernetes Application on the
+[Applications](https://console.developers.google.com/kubernetes/application?project={{project-id}})
+view. The application's *Next Steps* section contains the relevant links and
+operator instructions.
+
+You can...
+
+* Use [Halyard](https://www.spinnaker.io/reference/halyard/) to further
+configure Spinnaker
+* Add provider accounts
+* Upgrade Spinnaker
+* Add more operators
+
+To start managing Spinnaker:
 
 ```bash
 ~/click-to-deploy/k8s/spinnaker/scripts/manage/update_console.sh
 ```
-
-### Ongoing Management
-
-When you want to manage Spinnaker in the future, you can always locate your Spinnaker installation
-by navigating to the newly registered Kubernetes Application via the [Applications](https://console.developers.google.com/kubernetes/application?project={{project-id}}) view.
-
-The application's *Next Steps* section contains the relevant links and operator instructions.
