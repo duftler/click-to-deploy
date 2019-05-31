@@ -104,9 +104,6 @@ spec:
           mountPath: /home/spinnaker/staging/.hal/default/service-settings/gate.yml
           subPath: gate.yml
         - name: halconfig
-          mountPath: /home/spinnaker/staging/.hal/default/service-settings/igor.yml
-          subPath: igor.yml
-        - name: halconfig
           mountPath: /home/spinnaker/staging/.hal/default/service-settings/fiat.yml
           subPath: fiat.yml
         - name: halconfig
@@ -124,6 +121,9 @@ spec:
         - name: halconfig
           mountPath: /home/spinnaker/staging/.hal/default/profiles/gate-local.yml
           subPath: gate-local.yml
+        - name: halconfig
+          mountPath: /home/spinnaker/staging/.hal/default/profiles/igor-local.yml
+          subPath: igor-local.yml
       volumes:
       - name: halconfig
         configMap:
@@ -155,12 +155,15 @@ metadata:
   name: halconfig
   namespace: halyard
 data:
-  igor.yml: |
-    enabled: false
-    skipLifeCycleManagement: true
+  deck.yml: |
+    host: 0.0.0.0
+    env:
+      API_HOST: http://spin-gate.spinnaker:8084
   fiat.yml: |
     enabled: false
     skipLifeCycleManagement: true
+  gate.yml: |
+    host: 0.0.0.0
   clouddriver-local.yml: |
     kubernetes.v2.managedBySuffix: gke-marketplace
   echo-local.yml: |
@@ -175,17 +178,14 @@ data:
           eventName: spinnaker_events
   front50-local.yml: |
     spinnaker.s3.versioning: false
+  gate-local.yml: |
+    redis.configuration.secure: true
+  igor-local.yml: |
+    locking:
+      enabled: true
   redis.yml: |
     overrideBaseUrl: redis://$REDIS_INSTANCE_HOST:6379
     skipLifeCycleManagement: true
-  gate-local.yml: |
-    redis.configuration.secure: true
-  gate.yml: |
-    host: 0.0.0.0
-  deck.yml: |
-    host: 0.0.0.0
-    env:
-      API_HOST: http://spin-gate.spinnaker:8084
   config: |
     currentDeployment: default
     deploymentConfigurations:
@@ -295,6 +295,13 @@ data:
         travis:
           enabled: false
           masters: []
+        gcb:
+          enabled: true
+          accounts:
+          - name: gcb-account
+            permissions: {}
+            project: $PROJECT_ID
+            subscriptionName: $GCB_PUBSUB_SUBSCRIPTION
       security:
         apiSecurity:
           ssl:

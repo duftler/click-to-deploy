@@ -12,7 +12,7 @@ source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
 
 ~/click-to-deploy/k8s/spinnaker/scripts/manage/check_project_mismatch.sh
 
-REQUIRED_APIS="cloudfunctions.googleapis.com container.googleapis.com endpoints.googleapis.com iap.googleapis.com monitoring.googleapis.com redis.googleapis.com"
+REQUIRED_APIS="cloudbuild.googleapis.com cloudfunctions.googleapis.com container.googleapis.com endpoints.googleapis.com iap.googleapis.com monitoring.googleapis.com redis.googleapis.com"
 NUM_REQUIRED_APIS=$(wc -w <<< "$REQUIRED_APIS")
 NUM_ENABLED_APIS=$(gcloud services list --project $PROJECT_ID \
   --filter="config.name:($REQUIRED_APIS)" \
@@ -50,7 +50,7 @@ fi
 
 bold "Assigning required roles to $SERVICE_ACCOUNT_NAME..."
 
-K8S_REQUIRED_ROLES=(container.admin logging.logWriter monitoring.admin pubsub.admin storage.admin)
+K8S_REQUIRED_ROLES=(cloudbuild.builds.editor container.admin logging.logWriter monitoring.admin pubsub.admin storage.admin)
 EXISTING_ROLES=$(gcloud projects get-iam-policy --filter bindings.members:$SA_EMAIL $PROJECT_ID \
   --flatten bindings[].members --format="value(bindings.role)")
 
@@ -140,6 +140,30 @@ if [ -z "$EXISTING_GCR_PUBSUB_SUBSCRIPTION_NAME" ]; then
     --topic=gcr
 else
   bold "Using existing pubsub subscription $GCR_PUBSUB_SUBSCRIPTION for GCR..."
+fi
+
+GCB_PUBSUB_TOPIC_NAME=projects/$PROJECT_ID/topics/cloud-builds
+EXISTING_GCB_PUBSUB_TOPIC_NAME=$(gcloud pubsub topics list --project $PROJECT_ID \
+  --filter="name=$GCB_PUBSUB_TOPIC_NAME" --format="value(name)")
+
+if [ -z "$EXISTING_GCB_PUBSUB_TOPIC_NAME" ]; then
+  bold "Creating pubsub topic $GCB_PUBSUB_TOPIC_NAME for GCB..."
+  gcloud pubsub topics create --project $PROJECT_ID $GCB_PUBSUB_TOPIC_NAME
+else
+  bold "Using existing pubsub topic $EXISTING_GCB_PUBSUB_TOPIC_NAME for GCB..."
+fi
+
+EXISTING_GCB_PUBSUB_SUBSCRIPTION_NAME=$(gcloud pubsub subscriptions list \
+  --project $PROJECT_ID \
+  --filter="name=projects/$PROJECT_ID/subscriptions/$GCB_PUBSUB_SUBSCRIPTION" \
+  --format="value(name)")
+
+if [ -z "$EXISTING_GCB_PUBSUB_SUBSCRIPTION_NAME" ]; then
+  bold "Creating pubsub subscription $GCB_PUBSUB_SUBSCRIPTION for GCB..."
+  gcloud pubsub subscriptions create --project $PROJECT_ID $GCB_PUBSUB_SUBSCRIPTION \
+    --topic=projects/$PROJECT_ID/topics/cloud-builds
+else
+  bold "Using existing pubsub subscription $GCB_PUBSUB_SUBSCRIPTION for GCB..."
 fi
 
 EXISTING_HAL_DEPLOY_APPLY_JOB_NAME=$(kubectl get job -n halyard \
