@@ -2,10 +2,7 @@
       # Manage your Spinnaker
       [Open Management Environment in Cloud Shell](https://console.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_git_repo=https://github.com/GoogleCloudPlatform/click-to-deploy.git&cloudshell_working_dir=k8s/spinnaker/scripts/manage&cloudshell_tutorial=landing_page_expanded.md)
 
-      Ensure you are connected to the correct GKE Cluster from within Cloud Shell:
-      ```
-      gcloud container clusters get-credentials $GKE_CLUSTER --zone $ZONE --project $PROJECT_ID
-      ```
+      Ensure you are connected to the correct GKE Cluster from within Cloud Shell. Follow the instructions in the Management Environment to check the Kubernetes context you are using and update it if necessary.
 
       # Connect to your Spinnaker
       [https://$DOMAIN_NAME](https://$DOMAIN_NAME)
