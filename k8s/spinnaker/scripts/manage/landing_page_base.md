@@ -4,15 +4,16 @@ Use this section to manage your Spinnaker deployment going forward.
 
 ## Select GCP project
 
-Select the project in which your Spinnaker is installed, then click **Confirm
-project**.
+Select the project in which your Spinnaker is installed, then click **Next**.
 
 <walkthrough-project-billing-setup>
 </walkthrough-project-billing-setup>
 
 ## Manage Spinnaker via Halyard from Cloud Shell
 
-This section guides you as you manage your Spinnaker deployment.
+This management console lets you run [Halyard
+commands](https://www.spinnaker.io/reference/halyard/) to configure and manage
+your Spinnaker installation.
 
 ### Ensure you are connected to the correct Kubernetes context
 
