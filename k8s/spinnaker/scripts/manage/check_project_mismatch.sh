@@ -4,7 +4,7 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
+source ~/spinnaker-for-gcp/scripts/install/properties
 
 GCLOUD_PROJECT_ID=$(gcloud info --format='value(config.project)')
 GCLOUD_PROJECT_ID=${GCLOUD_PROJECT_ID:-'not set'}

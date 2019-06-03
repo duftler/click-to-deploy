@@ -67,12 +67,12 @@ if [ $EXISTING_DEPLOYMENT_SECRET_NAME != 'null' ]; then
     fi
   }
 
-  extract_to_file_if_defined properties ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
-  extract_to_file_if_defined config.json ~/click-to-deploy/k8s/spinnaker/scripts/install/spinnakerAuditLog/config.json
-  extract_to_file_if_defined index.js ~/click-to-deploy/k8s/spinnaker/scripts/install/spinnakerAuditLog/index.js
-  extract_to_file_if_defined configure_iap_expanded.md ~/click-to-deploy/k8s/spinnaker/scripts/expose/configure_iap_expanded.md
-  extract_to_file_if_defined openapi_expanded.yml ~/click-to-deploy/k8s/spinnaker/scripts/expose/openapi_expanded.yml
-  extract_to_file_if_defined landing_page_expanded.md ~/click-to-deploy/k8s/spinnaker/scripts/manage/landing_page_expanded.md
+  extract_to_file_if_defined properties ~/spinnaker-for-gcp/scripts/install/properties
+  extract_to_file_if_defined config.json ~/spinnaker-for-gcp/scripts/install/spinnakerAuditLog/config.json
+  extract_to_file_if_defined index.js ~/spinnaker-for-gcp/scripts/install/spinnakerAuditLog/index.js
+  extract_to_file_if_defined configure_iap_expanded.md ~/spinnaker-for-gcp/scripts/expose/configure_iap_expanded.md
+  extract_to_file_if_defined openapi_expanded.yml ~/spinnaker-for-gcp/scripts/expose/openapi_expanded.yml
+  extract_to_file_if_defined landing_page_expanded.md ~/spinnaker-for-gcp/scripts/manage/landing_page_expanded.md
   mkdir -p ~/.spin
   extract_to_file_if_defined config ~/.spin/config
   extract_to_file_if_defined key.json ~/.spin/key.json

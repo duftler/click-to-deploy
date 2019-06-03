@@ -4,7 +4,7 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
+source ~/spinnaker-for-gcp/scripts/install/properties
 
 # TODO(duftler): Add check to ensure that we are not overriding with older or empty config.
 
@@ -82,12 +82,12 @@ copy_if_exists() {
   fi
 }
 
-copy_if_exists ~/click-to-deploy/k8s/spinnaker/scripts/install/properties deployment_config_files
-copy_if_exists ~/click-to-deploy/k8s/spinnaker/scripts/install/spinnakerAuditLog/config.json deployment_config_files
-copy_if_exists ~/click-to-deploy/k8s/spinnaker/scripts/install/spinnakerAuditLog/index.js deployment_config_files
-copy_if_exists ~/click-to-deploy/k8s/spinnaker/scripts/expose/configure_iap_expanded.md deployment_config_files
-copy_if_exists ~/click-to-deploy/k8s/spinnaker/scripts/expose/openapi_expanded.yml deployment_config_files
-copy_if_exists ~/click-to-deploy/k8s/spinnaker/scripts/manage/landing_page_expanded.md deployment_config_files
+copy_if_exists ~/spinnaker-for-gcp/scripts/install/properties deployment_config_files
+copy_if_exists ~/spinnaker-for-gcp/scripts/install/spinnakerAuditLog/config.json deployment_config_files
+copy_if_exists ~/spinnaker-for-gcp/scripts/install/spinnakerAuditLog/index.js deployment_config_files
+copy_if_exists ~/spinnaker-for-gcp/scripts/expose/configure_iap_expanded.md deployment_config_files
+copy_if_exists ~/spinnaker-for-gcp/scripts/expose/openapi_expanded.yml deployment_config_files
+copy_if_exists ~/spinnaker-for-gcp/scripts/manage/landing_page_expanded.md deployment_config_files
 copy_if_exists ~/.spin/config deployment_config_files
 copy_if_exists ~/.spin/key.json deployment_config_files
 

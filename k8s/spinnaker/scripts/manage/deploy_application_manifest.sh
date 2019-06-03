@@ -4,7 +4,7 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
+source ~/spinnaker-for-gcp/scripts/install/properties
 
 # Query for static ip address as a signal that the Spinnaker installation is exposed via a secured endpoint.
 export IP_ADDR=$(gcloud compute addresses list --filter="name=$STATIC_IP_NAME" \
@@ -17,9 +17,9 @@ else
 fi
 
 kubectl apply -f "https://raw.githubusercontent.com/GoogleCloudPlatform/marketplace-k8s-app-tools/master/crd/app-crd.yaml"
-cat ~/click-to-deploy/k8s/spinnaker/templates/spinnaker_application_manifest_top.yaml \
-  ~/click-to-deploy/k8s/spinnaker/templates/$APP_MANIFEST_MIDDLE \
-  ~/click-to-deploy/k8s/spinnaker/templates/spinnaker_application_manifest_bottom.yaml \
+cat ~/spinnaker-for-gcp/templates/spinnaker_application_manifest_top.yaml \
+  ~/spinnaker-for-gcp/templates/$APP_MANIFEST_MIDDLE \
+  ~/spinnaker-for-gcp/templates/spinnaker_application_manifest_bottom.yaml \
   | envsubst | kubectl apply -f -
 
 bold "Labeling resources as components of application $DEPLOYMENT_NAME..."

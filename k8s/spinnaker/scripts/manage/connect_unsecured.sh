@@ -4,9 +4,9 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
+source ~/spinnaker-for-gcp/scripts/install/properties
 
-~/click-to-deploy/k8s/spinnaker/scripts/manage/check_project_mismatch.sh
+~/spinnaker-for-gcp/scripts/manage/check_project_mismatch.sh
 
 bold "Locating Deck pod..."
 

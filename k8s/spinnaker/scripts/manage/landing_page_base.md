@@ -17,7 +17,7 @@ This section guides you as you manage your Spinnaker deployment.
 ### Ensure you are connected to the correct Kubernetes context
 
 ```bash
-PROJECT_ID={{project-id}} ~/click-to-deploy/k8s/spinnaker/scripts/manage/check_cluster_config.sh
+PROJECT_ID={{project-id}} ~/spinnaker-for-gcp/scripts/manage/check_cluster_config.sh
 ```
 
 ### Pull Spinnaker config
@@ -27,7 +27,7 @@ deployment into your Cloud Shell.
 
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/pull_config.sh
+~/spinnaker-for-gcp/scripts/manage/pull_config.sh
 ```
 
 ### Update the console
@@ -37,7 +37,7 @@ deployment into your Cloud Shell.
 This will include details on how to connect to Spinnaker.
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/update_console.sh
+~/spinnaker-for-gcp/scripts/manage/update_console.sh
 ```
 
 ### Configure Spinnaker via Halyard
@@ -70,7 +70,7 @@ If you change any of the configuration, paste and run this command to push
 those changes to your Spinnaker deployment.
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/push_config.sh
+~/spinnaker-for-gcp/scripts/manage/push_config.sh
 ```
 
 ### Apply updated config to Spinnaker deployment
@@ -79,7 +79,7 @@ After you push configuration changes, you need to paste and run the following
 command to apply them to your Spinnaker deployment.
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/apply_config.sh
+~/spinnaker-for-gcp/scripts/manage/apply_config.sh
 ```
 
 ## Included command-line tools
@@ -92,13 +92,13 @@ daemon are installed in your Cloud Shell.
 If you want to use a specific version of Halyard, use:
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/cli/install_hal.sh --version $HALYARD_VERSION
+~/spinnaker-for-gcp/scripts/cli/install_hal.sh --version $HALYARD_VERSION
 ```
 
 If you want to upgrade to the latest version of Halyard, use:
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/cli/update_hal.sh
+~/spinnaker-for-gcp/scripts/cli/update_hal.sh
 ```
 
 ### Spinnaker CLI
@@ -109,7 +109,7 @@ The [Spinnaker CLI](https://www.spinnaker.io/guides/spin/app/)
 If you want to upgrade to the latest version, use:
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/cli/install_spin.sh
+~/spinnaker-for-gcp/scripts/cli/install_spin.sh
 ```
 
 ## Scripts for Common Commands
@@ -123,19 +123,19 @@ The public Spinnaker documentation contains details on [configuring GKE
 clusters](https://www.spinnaker.io/setup/install/providers/kubernetes-v2/gke/).
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/add_gke_account.sh
+~/spinnaker-for-gcp/scripts/manage/add_gke_account.sh
 ```
 
 ### Add Spinnaker account for GCE
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/add_gce_account.sh
+~/spinnaker-for-gcp/scripts/manage/add_gce_account.sh
 ```
 
 ### Add Spinnaker account for GAE
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/add_gae_account.sh
+~/spinnaker-for-gcp/scripts/manage/add_gae_account.sh
 ```
 
 ### Upgrade Spinnaker
@@ -143,14 +143,14 @@ clusters](https://www.spinnaker.io/setup/install/providers/kubernetes-v2/gke/).
 First, modify `SPINNAKER_VERSION` in your `properties` file to reflect the desired version of Spinnaker:
 
 <walkthrough-editor-open-file
-    filePath="click-to-deploy/k8s/spinnaker/scripts/install/properties"
+    filePath="spinnaker-for-gcp/scripts/install/properties"
     text="Open properties file">
 </walkthrough-editor-open-file>
 
 Next, use Halyard to apply the changes:
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/update_spinnaker_version.sh
+~/spinnaker-for-gcp/scripts/manage/update_spinnaker_version.sh
 ```
 
 ### Upgrade Halyard daemon running in cluster
@@ -158,20 +158,20 @@ Next, use Halyard to apply the changes:
 First, modify `HALYARD_VERSION` in your `properties` file to reflect the desired version of Halyard:
 
 <walkthrough-editor-open-file
-    filePath="click-to-deploy/k8s/spinnaker/scripts/install/properties"
+    filePath="spinnaker-for-gcp/scripts/install/properties"
     text="Open properties file">
 </walkthrough-editor-open-file>
 
 Next, apply this change to the Statefulset managing the Halyard daemon:
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/update_halyard_daemon.sh
+~/spinnaker-for-gcp/scripts/manage/update_halyard_daemon.sh
 ```
 
 ### Connect to Redis
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/connect_to_redis.sh
+~/spinnaker-for-gcp/scripts/manage/connect_to_redis.sh
 ```
 
 ## Configure Operator Access

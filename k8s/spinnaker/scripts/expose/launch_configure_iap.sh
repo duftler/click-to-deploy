@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pushd ~/click-to-deploy/k8s/spinnaker/scripts
+pushd ~/spinnaker-for-gcp/scripts
 
 source ./install/properties
 

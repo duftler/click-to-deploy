@@ -4,7 +4,7 @@ bold() {
   echo ". $(tput bold)" "$*" "$(tput sgr0)";
 }
 
-source ~/click-to-deploy/k8s/spinnaker/scripts/install/properties
+source ~/spinnaker-for-gcp/scripts/install/properties
 
 read -e -p "Please enter the id of the project within which you wish to manage GAE resources: " -i $PROJECT_ID MANAGED_PROJECT_ID
 read -e -p "Please enter a name for the new Spinnaker account: " -i "$MANAGED_PROJECT_ID-acct" GAE_ACCOUNT_NAME

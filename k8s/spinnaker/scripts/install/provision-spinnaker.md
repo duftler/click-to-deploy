@@ -17,14 +17,14 @@ then press **Enter** to run it from the Shell.
 ### Configure the environment.
 
 ```bash
-PROJECT_ID={{project-id}} ~/click-to-deploy/k8s/spinnaker/scripts/install/setup_properties.sh
+PROJECT_ID={{project-id}} ~/spinnaker-for-gcp/scripts/install/setup_properties.sh
 ```
 
 After that script finishes, you can click the link below to open the properties file for your Spinnaker
 installation. This is optional.
 
 <walkthrough-editor-open-file
-    filePath="click-to-deploy/k8s/spinnaker/scripts/install/properties"
+    filePath="spinnaker-for-gcp/scripts/install/properties"
     text="Open properties file">
 </walkthrough-editor-open-file>
 
@@ -36,7 +36,7 @@ as expected.
 **This will take some time**
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/install/setup.sh
+~/spinnaker-for-gcp/scripts/install/setup.sh
 ```
 
 Watch the Cloud Shell command line to see when it completes, then click
@@ -58,7 +58,7 @@ Don't use the `hal deploy connect` command. Instead, use the following command
 only.
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/connect_unsecured.sh
+~/spinnaker-for-gcp/scripts/manage/connect_unsecured.sh
 ```
 
 To connect to the Deck UI, click the link below, which highlights the Preview
@@ -76,7 +76,7 @@ If you would like to connect to Spinnaker without relying on port forwarding, we
 expose it via a secure domain behind the [Identity-Aware Proxy](https://cloud.google.com/iap/).
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/expose/configure_endpoint.sh
+~/spinnaker-for-gcp/scripts/expose/configure_endpoint.sh
 ```
 
 ### View Spinnaker Audit Log
@@ -106,5 +106,5 @@ configure Spinnaker
 To start managing Spinnaker:
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/update_console.sh
+~/spinnaker-for-gcp/scripts/manage/update_console.sh
 ```

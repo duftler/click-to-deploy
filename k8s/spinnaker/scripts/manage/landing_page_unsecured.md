@@ -3,7 +3,7 @@
 ### Forward Port to Deck
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/manage/connect_unsecured.sh
+~/spinnaker-for-gcp/scripts/manage/connect_unsecured.sh
 ```
 
 ### Connect to Deck
@@ -24,5 +24,5 @@ If you would like to connect to Spinnaker without relying on port forwarding, we
 expose it via a secure domain behind the [Identity-Aware Proxy](https://cloud.google.com/iap/).
 
 ```bash
-~/click-to-deploy/k8s/spinnaker/scripts/expose/configure_endpoint.sh
+~/spinnaker-for-gcp/scripts/expose/configure_endpoint.sh
 ```
